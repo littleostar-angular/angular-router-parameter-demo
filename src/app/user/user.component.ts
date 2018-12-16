@@ -8,6 +8,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class UserComponent implements OnInit {
   username: string;
+  hobby: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -18,6 +19,7 @@ export class UserComponent implements OnInit {
     // this.username = this.activatedRoute.snapshot.params.username;
     this.activatedRoute.paramMap.subscribe(para => {
       this.username = para.get('username');
+      this.hobby = para.get('hobby');
     });
   }
 

@@ -2,9 +2,9 @@
   user component works!
 </div>
 
-<div *ngIf="username">
-  <p>
-    user works! {{username}}
-  </p>
-  <app-user-detail [username]="username"></app-user-detail>
+<div *ngIf="username || hobby">
+  <!--<p>-->
+  <!--user works! {{username}}-->
+  <!--</p>-->
+  <app-user-detail [username]="username" [hobby]="hobby"></app-user-detail>
 </div>

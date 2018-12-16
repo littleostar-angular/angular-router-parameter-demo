@@ -7,4 +7,6 @@ import {Component, Input} from '@angular/core';
 })
 export class UserDetailComponent {
   @Input() username: string;
+  @Input() hobby: string;
+
 }
