@@ -3,7 +3,7 @@
 ---
 
 - from
-  - https://scotch.io/tutorials/handling-route-parameters-in-angular-v2.
+  - scotch.io handling-route-parameters-in-angular-v2
 
 - angular
   - version 7
