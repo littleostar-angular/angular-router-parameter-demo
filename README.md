@@ -1,27 +1,78 @@
-# AngularRouterParameterDemo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- from
+  - https://scotch.io/tutorials/handling-route-parameters-in-angular-v2.
 
-## Code scaffolding
+- angular
+  - version 7
+  - router demo
+  - router parameter
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- access demo
+  - [demo](https://littleostar-angular.github.io/angular-router-parameter-demo/)
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+app-routing.module.ts
+```typescript
+const routes: Routes = [
+  {path: '', pathMatch: 'full', redirectTo: 'home'},
+  {path: 'home', component: HomeComponent},
+  {path: 'users', component: UserComponent},
+  {path: 'users/:username', component: UserComponent}
+];
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+user.component.ts
+```typescript
+export class UserComponent implements OnInit {
+  username: string;
+  constructor(
+    private activatedRoute: ActivatedRoute,
+  ) {
+  }
+  ngOnInit() {
+    // this.username = this.activatedRoute.snapshot.params.username;
+    this.activatedRoute.paramMap.subscribe( para => {
+      this.username = para.get('username');
+    });
+  }
 
-## Running end-to-end tests
+}
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+user.component.html
+```html
+<div>
+  user component works!
+</div>
 
-## Further help
+<div *ngIf="username">
+  <p>
+    user works! {{username}}
+  </p>
+  <app-user-detail [username]="username"></app-user-detail>
+</div>
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+user-detail.component.ts
+```typescript
+export class UserDetailComponent  {
+  @Input() username: string;
+}
+```
+
+user-detail.component.html
+```html
+<p>
+  user-detail works!{{username}}
+</p>
+
+```
+
+---
+
+end

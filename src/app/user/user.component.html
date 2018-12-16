@@ -1,0 +1,10 @@
+<div>
+  user component works!
+</div>
+
+<div *ngIf="username">
+  <p>
+    user works! {{username}}
+  </p>
+  <app-user-detail [username]="username"></app-user-detail>
+</div>
