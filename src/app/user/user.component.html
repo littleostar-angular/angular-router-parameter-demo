@@ -4,4 +4,7 @@
 
 <div *ngIf="username || hobby">
   <app-user-detail [username]="username" [hobby]="hobby"></app-user-detail>
+
+  <hr>
+  <app-user-hobby [hobby]="hobby"></app-user-hobby>
 </div>
